@@ -9,14 +9,33 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item-group *ngFor="let contato of contatos">
-      <ion-item lines="none"><ion-label>Nome: {{contato.nome}}</ion-label></ion-item>
-      <ion-item><ion-label>Telefone: {{contato.telefone}}</ion-label></ion-item>
+      <ion-item lines="none">
+        <ion-label>Nome: {{ contato.nome }}</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Telefone: {{ contato.telefone }}</ion-label>
+      </ion-item>
+
+      <ion-item lines="none" *ngIf="contato.dataNascimento && contato.dataNascimento !== ''">
+        <ion-label>
+          Data de Nascimento: {{ contato.dataNascimento | date:'dd/MM/yyyy' }}
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="none" *ngIf="contato.genero && contato.genero !== ''">
+        <ion-label>
+          Gênero: {{ contato.genero }}
+        </ion-label>
+      </ion-item>
     </ion-item-group>
   </ion-list> 
-  
-  <ion-fab vertical="bottom" horizontal="end" slot ="fixed">
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="irParaCadastrar()"> 
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+
