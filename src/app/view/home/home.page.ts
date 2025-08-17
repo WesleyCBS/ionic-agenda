@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
-import {add} from 'ionicons/icons';
+import { add, createOutline, trash } from 'ionicons/icons'
 import { Contato } from 'src/app/model/contato';
 import { ContatoService } from 'src/app/service/contato.service';
 
-addIcons({add:add, })
+addIcons({add:add, 'create-outline':createOutline})
 
 @Component({
   selector: 'app-home',
@@ -20,13 +20,15 @@ export class HomePage {
 
   constructor(private router: Router,
     private contatoService: ContatoService
-  ){
+  ) { 
     this.contatos = this.contatoService.contatos;
-  
-
   }
 
   irParaCadastrar(){
     this.router.navigate(["/cadastrar"])
   }
+  detalhar(contato: Contato){
+  
+  this.router.navigateByUrl('/detalhar', {state: {objeto:contato}})
+}
 }
