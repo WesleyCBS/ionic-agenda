@@ -70,7 +70,7 @@ private validar(campo:any) : boolean{
   }
   excluir(){
     this.presentConfirmAlert("Excluir Contato", "Você realmente deseja excluir contato",
-      this.excluirContato()
+      () => this.excluirContato()
     )
   }
 
@@ -91,14 +91,14 @@ private validar(campo:any) : boolean{
   }
 }
 
-async presentConfirmAlert(subHeader: string, message: string, acao: any) {
+async presentConfirmAlert(subHeader: string, message: string, acao: () => void) {
   const alert = await this.alertController.create({
-    header: 'Agenda de Conatatos',
+    header: 'Agenda de Contatos',
     subHeader: subHeader,
     message: message,
     buttons: [
-      {text: 'Cancelar', role: 'cancelar', cssClass: 'secondary', handler:()=>{}},
-      {text: 'Confirmar', handler:(acao)=>{acao}}
+      {text: 'Cancelar', role: 'cancelar', cssClass: 'secondary'},
+      {text: 'Confirmar', handler:()=>{acao();}}
     ],
   });
 
