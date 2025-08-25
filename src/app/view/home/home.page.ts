@@ -31,4 +31,11 @@ export class HomePage {
   
   this.router.navigateByUrl('/detalhar', {state: {objeto:contato}})
 }
+abrirConfiguracoes() {
+  console.log('Menu configurações');
 }
+}
+
+
+
+
