@@ -64,3 +64,4 @@ export class CadastrarPage implements OnInit {
   }
 }
 
+
